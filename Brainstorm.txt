@@ -9,3 +9,6 @@ Hours: f(Incentive)
 Percent_change: g(Hours) = g(f(Incentive))
 substitute equations to get Percent_change: h(Incentive)
 Need to maximize (Percent_change * Premium - Incentive)
+
+From written notes (to be typed in LaTeX):
+Incentive = -400*ln( ln(200/2.706706 * 1/Premium)/3 )
