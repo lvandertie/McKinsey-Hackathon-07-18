@@ -1,0 +1,11 @@
+# Raw Brainstorm
+- Part A
+Logistic regression to get benchmark probability
+
+- Part B
+Playing with the cutoff prob vs cost to change
+The only lever we can pull is the incentive offered to employee
+Hours: f(Incentive)
+Percent_change: g(Hours) = g(f(Incentive))
+substitute equations to get Percent_change: h(Incentive)
+Need to maximize (Percent_change * Premium - Incentive)
