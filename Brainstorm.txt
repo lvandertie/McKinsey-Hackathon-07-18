@@ -12,3 +12,7 @@ Need to maximize (Percent_change * Premium - Incentive)
 
 From written notes (to be typed in LaTeX):
 Incentive = -400*ln( ln(200/2.706706 * 1/Premium)/3 )
+
+Reality Checks:
+Percentages (benchmark + added) cannot be more than 100%
+Final Incentive calculation must compute (e.g. Premium might lead to no incentive)
