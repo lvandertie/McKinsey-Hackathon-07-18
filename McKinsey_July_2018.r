@@ -1,17 +1,37 @@
 # Luke Vandertie
 # McKinsey Hackathon July 20-22, 2018
 
+library(dummies)
+
 #----Logistic Regression to create benchmark probability model----
 setwd("C:/Users/lvandertie001/Documents/GitHub/McKinsey-Hackathon-07-18")
 # Read data
 train.data <- read.csv(file = "train_ZoGVYWq.csv")
+  # Try to read in straight from online
+  #train.online <- read.csv("https://datahack.analyticsvidhya.com/contest/mckinsey-analytics-online-hackathon-4/download/test-file")
 
-# Convert categorical variables
+# Convert to Categorical and Drop Redundant
 
-# Potentially combine the count of months into one ordinal variable
+drop_redundant <- function(data.frame.var) {
+  data.frame.var <- dummy.data.frame(data.frame.var)
+  data.frame.var$sourcing_channelA <- NULL
+  data.frame.var$residence_area_typeRural <- NULL
+  data.frame.var$id <- NULL
+  # Potentially combine the count of months (% of claims in each)
+  return(data.frame.var)
+}
 
-# Run glm
+train.data.converted <- drop_redundant(train.data)
 
+# Create glm
+logistic.model <- glm(renewal ~ . , train.data.converted, family = "binomial")
+
+#----Predict benchmark probability using glm----
+test.data <- read.csv(file = "test_66516Ee.csv")
+
+test.data.converted <- drop_redundant(test.data)
+
+test.predictions <- predict(logistic.model, test.data.converted, type = "response")
 
 #----Plug Premium into optimization equation to get ideal Incentive
 Premium <- 3000

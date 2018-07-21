@@ -1,8 +1,12 @@
 # Raw Brainstorm
-- Part A
+------ Part A ------
 Logistic regression to get benchmark probability
 
-- Part B
+Potentially look at consolidating Counts of Premium Payment Dates as % of all premiums paid
+in each timeframe
+
+
+------ Part B ------
 Playing with the cutoff prob vs cost to change
 The only lever we can pull is the incentive offered to employee
 Hours: f(Incentive)
