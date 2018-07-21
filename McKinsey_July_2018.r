@@ -33,6 +33,10 @@ test.data.converted <- drop_redundant(test.data)
 
 test.predictions <- predict(logistic.model, test.data.converted, type = "response")
 
+# Look at a histogram of revalues
+# Inspect NA's
+
+
 #----Plug Premium into optimization equation to get ideal Incentive
 Premium <- 3000
 
