@@ -56,19 +56,25 @@ colnames(test.data)[colSums(is.na(test.data)) > 0]
 test.data.converted <- drop_redundant(test.data)
 
 test.data.converted$predicted_prob <- predict(logistic.model, test.data.converted, type = "response")
-
-# Look at a histogram of revalues
-# Inspect NA's
-
+test.data.converted <- cbind(test.data$id, test.data.converted)
 
 #----Plug Premium into optimization equation to get ideal Incentive
 
+test.data.converted$incentive <- -400 * log( log(200/2.706706 * (100/test.data.converted$premium))/3  ) 
+# Set NA's to zero
+test.data.converted$incentive[is.na(test.data.converted$incentive)] <- 0
+
+colnames(test.data.converted)[colSums(is.na(test.data.converted)) > 0]
+
+#---- Prepare for output format ----
+
+
+
+#---- Test work for incentive calc. ----
 #Incentive <- 1500
 #Hours <- 10*(1 - exp(-Incentive/400))
 #Hours <- 1
 #delta_p <- 20*(1 - exp(- Hours/5))
-
-incentive <- -400 * log( log(200/2.706706 * (100/Premium))/3  ) 
 
 curve(log(log(200/2.706706 * (100/x))/3), from = 0, to = 10000, xlab = "Premium", ylab = "Incentive")
 
